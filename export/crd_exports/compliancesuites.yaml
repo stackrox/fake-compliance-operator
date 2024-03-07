@@ -1,0 +1,157 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ComplianceSuite",
+      "metadata": {
+        "creationTimestamp": "2024-03-05T15:09:39Z",
+        "finalizers": [
+          "suite.finalizers.compliance.openshift.io"
+        ],
+        "generation": 1,
+        "name": "compliance-scan-schedule",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "811835",
+        "uid": "cb4e8426-eedf-4da7-8794-25faeaa389cb"
+      },
+      "spec": {
+        "scans": [
+          {
+            "content": "ssg-ocp4-ds.xml",
+            "contentImage": "ghcr.io/complianceascode/k8scontent:latest",
+            "maxRetryOnTimeout": 3,
+            "name": "ocp4-bsi",
+            "profile": "xccdf_org.ssgproject.content_profile_bsi",
+            "rawResultStorage": {
+              "pvAccessModes": [
+                "ReadWriteOnce"
+              ],
+              "rotation": 3,
+              "size": "1Gi"
+            },
+            "scanTolerations": [
+              {
+                "operator": "Exists"
+              }
+            ],
+            "scanType": "Platform",
+            "showNotApplicable": false,
+            "strictNodeScan": false,
+            "timeout": "30m0s"
+          },
+          {
+            "content": "ssg-ocp4-ds.xml",
+            "contentImage": "ghcr.io/complianceascode/k8scontent:latest",
+            "maxRetryOnTimeout": 3,
+            "name": "ocp4-cis",
+            "profile": "xccdf_org.ssgproject.content_profile_cis",
+            "rawResultStorage": {
+              "pvAccessModes": [
+                "ReadWriteOnce"
+              ],
+              "rotation": 3,
+              "size": "1Gi"
+            },
+            "scanTolerations": [
+              {
+                "operator": "Exists"
+              }
+            ],
+            "scanType": "Platform",
+            "showNotApplicable": false,
+            "strictNodeScan": false,
+            "timeout": "30m0s"
+          }
+        ],
+        "schedule": "0 0 * * *",
+        "suspend": false
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2024-03-07T00:01:57Z",
+            "message": "Compliance suite run is done running the scans",
+            "reason": "NotRunning",
+            "status": "False",
+            "type": "Processing"
+          },
+          {
+            "lastTransitionTime": "2024-03-07T00:01:57Z",
+            "message": "Compliance suite run is done and has results",
+            "reason": "Done",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "phase": "DONE",
+        "result": "NON-COMPLIANT",
+        "scanStatuses": [
+          {
+            "conditions": [
+              {
+                "lastTransitionTime": "2024-03-07T00:01:42Z",
+                "message": "Compliance scan run is done running the scans",
+                "reason": "NotRunning",
+                "status": "False",
+                "type": "Processing"
+              },
+              {
+                "lastTransitionTime": "2024-03-07T00:01:42Z",
+                "message": "Compliance scan run is done and has results",
+                "reason": "Done",
+                "status": "True",
+                "type": "Ready"
+              }
+            ],
+            "currentIndex": 2,
+            "endTimestamp": "2024-03-07T00:01:42Z",
+            "name": "ocp4-bsi",
+            "phase": "DONE",
+            "remainingRetries": 3,
+            "result": "NON-COMPLIANT",
+            "resultsStorage": {
+              "name": "ocp4-bsi",
+              "namespace": "openshift-compliance"
+            },
+            "startTimestamp": "2024-03-07T00:00:24Z"
+          },
+          {
+            "conditions": [
+              {
+                "lastTransitionTime": "2024-03-07T00:01:57Z",
+                "message": "Compliance scan run is done running the scans",
+                "reason": "NotRunning",
+                "status": "False",
+                "type": "Processing"
+              },
+              {
+                "lastTransitionTime": "2024-03-07T00:01:57Z",
+                "message": "Compliance scan run is done and has results",
+                "reason": "Done",
+                "status": "True",
+                "type": "Ready"
+              }
+            ],
+            "currentIndex": 2,
+            "endTimestamp": "2024-03-07T00:01:57Z",
+            "name": "ocp4-cis",
+            "phase": "DONE",
+            "remainingRetries": 3,
+            "result": "NON-COMPLIANT",
+            "resultsStorage": {
+              "name": "ocp4-cis",
+              "namespace": "openshift-compliance"
+            },
+            "startTimestamp": "2024-03-07T00:00:24Z",
+            "warnings": "could not fetch /apis/apps/v1/namespaces/openshift-sdn/daemonsets/sdn: daemonsets.apps \"sdn\" not found"
+          }
+        ]
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ProfileBundle",
+      "metadata": {
+        "creationTimestamp": "2024-03-05T15:01:53Z",
+        "finalizers": [
+          "profilebundle.finalizers.compliance.openshift.io"
+        ],
+        "generation": 1,
+        "name": "ocp4",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "77636",
+        "uid": "f571a8ac-2c12-4dd8-9f9c-b5db86a6d52b"
+      },
+      "spec": {
+        "contentFile": "ssg-ocp4-ds.xml",
+        "contentImage": "ghcr.io/complianceascode/k8scontent:latest"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2024-03-05T15:02:42Z",
+            "message": "Profile bundle successfully parsed",
+            "reason": "Valid",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "dataStreamStatus": "VALID"
+      }
+    },
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ProfileBundle",
+      "metadata": {
+        "creationTimestamp": "2024-03-05T15:01:53Z",
+        "finalizers": [
+          "profilebundle.finalizers.compliance.openshift.io"
+        ],
+        "generation": 1,
+        "name": "rhcos4",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "78621",
+        "uid": "c1f3d36e-3c43-46b2-8100-bb3b8db84b36"
+      },
+      "spec": {
+        "contentFile": "ssg-rhcos4-ds.xml",
+        "contentImage": "ghcr.io/complianceascode/k8scontent:latest"
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2024-03-05T15:03:30Z",
+            "message": "Profile bundle successfully parsed",
+            "reason": "Valid",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "dataStreamStatus": "VALID"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

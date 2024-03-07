@@ -1,0 +1,81 @@
+{
+  "apiVersion": "compliance.openshift.io/v1alpha1",
+  "kind": "ProfileBundle",
+  "metadata": {
+    "finalizers": [
+      "profilebundle.finalizers.compliance.openshift.io"
+    ],
+    "name": "ocp4",
+    "namespace": "openshift-compliance",
+  },
+  "spec": {
+    "contentFile": "ssg-ocp4-ds.xml",
+    "contentImage": "ghcr.io/complianceascode/k8scontent:latest"
+  },
+}
+---
+{
+  "apiVersion": "compliance.openshift.io/v1alpha1",
+  "description": "This is a test profile for development purposes only",
+  "id": "xccdf_org.ssgproject.content_profile_bsi",
+  "kind": "Profile",
+  "metadata": {
+    "annotations": {
+      "compliance.openshift.io/image-digest": "pb-ocp4qx7xv",
+      "compliance.openshift.io/product": "redhat_openshift_container_platform_4.1",
+      "compliance.openshift.io/product-type": "Platform"
+    },
+    "labels": {
+      "compliance.openshift.io/profile-bundle": "ocp4"
+    },
+    "name": "ocp4-development",
+    "namespace": "openshift-compliance",
+  },
+  "rules": [
+    "ocp4-ocp-insecure-allowed-registries-for-import",
+    "ocp4-api-server-anonymous-auth",
+    "ocp4-scc-limit-root-containers",
+    "ocp4-scc-limit-network-namespace",
+    "ocp4-kubeadmin-removed",
+    "ocp4-scc-limit-net-raw-capability",
+    "ocp4-version-detect-in-ocp",
+    "ocp4-scc-limit-ipc-namespace",
+    "ocp4-scc-limit-host-dir-volume-plugin",
+    "ocp4-version-detect-in-hypershift",
+    "ocp4-scc-limit-process-id-namespace",
+    "ocp4-scc-limit-privileged-containers",
+    "ocp4-ocp-insecure-registries",
+    "ocp4-rbac-least-privilege"
+  ],
+  "title": "BSI IT-Grundschutz (Basic Protection) Building Block SYS.1.6 and APP.4.4",
+  "version": "2022"
+}
+---
+{
+  "apiVersion": "compliance.openshift.io/v1alpha1",
+  "description": "Service accounts tokens should not be mounted in pods except where the workload running in the pod explicitly needs to communicate with the API server. To ensure pods do not automatically mount tokens, set automountServiceAccountToken to false.",
+  "id": "xccdf_org.ssgproject.content_rule_accounts_restrict_service_account_tokens",
+  "instructions": "For each pod in the cluster, review the pod specification and\nensure that pods that do not need to explicitly communicate with\nthe API server have automountServiceAccountToken\nconfigured to false.",
+  "kind": "Rule",
+  "metadata": {
+    "annotations": {
+      "compliance.openshift.io/image-digest": "pb-ocp4qx7xv",
+      "compliance.openshift.io/profiles": "ocp4-development",
+      "compliance.openshift.io/rule": "accounts-restrict-service-account-tokens",
+      "control.compliance.openshift.io/CIS-OCP": "5.1.6",
+      "control.compliance.openshift.io/NERC-CIP": "CIP-003-8 R6;CIP-004-6 R3;CIP-007-3 R6.1",
+      "control.compliance.openshift.io/NIST-800-53": "CM-6;CM-6(1)",
+      "control.compliance.openshift.io/PCI-DSS": "Req-2.2",
+      "policies.open-cluster-management.io/controls": "CIP-003-8 R6,CIP-004-6 R3,CIP-007-3 R6.1,CM-6,CM-6(1),Req-2.2,5.1.6",
+      "policies.open-cluster-management.io/standards": "NERC-CIP,NIST-800-53,PCI-DSS,CIS-OCP"
+    },
+    "labels": {
+      "compliance.openshift.io/profile-bundle": "ocp4"
+    },
+    "name": "ocp4-accounts-restrict-service-account-tokens",
+    "namespace": "openshift-compliance",
+  },
+  "rationale": "Mounting service account tokens inside pods can provide an avenue for privilege escalation attacks where an attacker is able to compromise a single pod in the cluster.",
+  "severity": "medium",
+  "title": "Restrict Automounting of Service Account Tokens"
+}

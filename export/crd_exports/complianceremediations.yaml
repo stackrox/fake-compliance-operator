@@ -1,0 +1,82 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ComplianceRemediation",
+      "metadata": {
+        "annotations": {
+          "compliance.openshift.io/xccdf-value-used": "var-apiserver-encryption-type"
+        },
+        "labels": {
+          "compliance.openshift.io/scan-name": "ocp4-cis",
+          "compliance.openshift.io/suite": "compliance-scan-schedule"
+        },
+        "name": "ocp4-cis-api-server-encryption-provider-cipher",
+        "namespace": "openshift-compliance",
+      },
+      "spec": {
+        "apply": false,
+        "current": {
+          "object": {
+            "apiVersion": "config.openshift.io/v1",
+            "kind": "APIServer",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "encryption": {
+                "type": "aescbc"
+              }
+            }
+          }
+        },
+        "outdated": {},
+        "type": "Configuration"
+      },
+      "status": {
+        "applicationState": "NotApplied"
+      }
+    },
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ComplianceRemediation",
+      "metadata": {
+        "annotations": {
+          "compliance.openshift.io/xccdf-value-used": "var-openshift-audit-profile"
+        },
+        "labels": {
+          "compliance.openshift.io/scan-name": "ocp4-cis",
+          "compliance.openshift.io/suite": "compliance-scan-schedule"
+        },
+        "name": "ocp4-cis-audit-profile-set",
+        "namespace": "openshift-compliance",
+      },
+      "spec": {
+        "apply": false,
+        "current": {
+          "object": {
+            "apiVersion": "config.openshift.io/v1",
+            "kind": "APIServer",
+            "metadata": {
+              "name": "cluster"
+            },
+            "spec": {
+              "audit": {
+                "profile": "WriteRequestBodies"
+              }
+            }
+          }
+        },
+        "outdated": {},
+        "type": "Configuration"
+      },
+      "status": {
+        "applicationState": "NotApplied"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+  }
+}

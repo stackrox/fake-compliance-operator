@@ -1,0 +1,173 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ScanSetting",
+      "maxRetryOnTimeout": 3,
+      "metadata": {
+        "annotations": {
+          "owner": "stackrox"
+        },
+        "creationTimestamp": "2024-03-05T15:09:39Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/name": "stackrox"
+        },
+        "name": "compliance-scan-schedule",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "82038",
+        "uid": "6dfb87c4-3d44-4bac-a696-23710dd026c0"
+      },
+      "rawResultStorage": {
+        "pvAccessModes": [
+          "ReadWriteOnce"
+        ],
+        "rotation": 3,
+        "size": "1Gi"
+      },
+      "roles": [
+        "master",
+        "worker"
+      ],
+      "scanTolerations": [
+        {
+          "operator": "Exists"
+        }
+      ],
+      "schedule": "0 0 * * *",
+      "showNotApplicable": false,
+      "strictNodeScan": false,
+      "suspend": false,
+      "timeout": "30m0s"
+    },
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "kind": "ScanSetting",
+      "maxRetryOnTimeout": 3,
+      "metadata": {
+        "creationTimestamp": "2024-03-05T15:01:53Z",
+        "generation": 1,
+        "name": "default",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "75901",
+        "uid": "d08d85cc-fcf8-46ba-9bc8-b2fcb59664dd"
+      },
+      "rawResultStorage": {
+        "nodeSelector": {
+          "node-role.kubernetes.io/master": ""
+        },
+        "pvAccessModes": [
+          "ReadWriteOnce"
+        ],
+        "rotation": 3,
+        "size": "1Gi",
+        "tolerations": [
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/master",
+            "operator": "Exists"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoSchedule",
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists"
+          }
+        ]
+      },
+      "roles": [
+        "master",
+        "worker"
+      ],
+      "scanTolerations": [
+        {
+          "operator": "Exists"
+        }
+      ],
+      "schedule": "0 1 * * *",
+      "showNotApplicable": false,
+      "strictNodeScan": true,
+      "suspend": false,
+      "timeout": "30m"
+    },
+    {
+      "apiVersion": "compliance.openshift.io/v1alpha1",
+      "autoApplyRemediations": true,
+      "autoUpdateRemediations": true,
+      "kind": "ScanSetting",
+      "maxRetryOnTimeout": 3,
+      "metadata": {
+        "creationTimestamp": "2024-03-05T15:01:53Z",
+        "generation": 1,
+        "name": "default-auto-apply",
+        "namespace": "openshift-compliance",
+        "resourceVersion": "75902",
+        "uid": "f85f2414-fd72-4d88-b61a-93110c5acb86"
+      },
+      "rawResultStorage": {
+        "nodeSelector": {
+          "node-role.kubernetes.io/master": ""
+        },
+        "pvAccessModes": [
+          "ReadWriteOnce"
+        ],
+        "rotation": 3,
+        "size": "1Gi",
+        "tolerations": [
+          {
+            "effect": "NoSchedule",
+            "key": "node-role.kubernetes.io/master",
+            "operator": "Exists"
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoSchedule",
+            "key": "node.kubernetes.io/memory-pressure",
+            "operator": "Exists"
+          }
+        ]
+      },
+      "roles": [
+        "master",
+        "worker"
+      ],
+      "scanTolerations": [
+        {
+          "operator": "Exists"
+        }
+      ],
+      "schedule": "0 1 * * *",
+      "showNotApplicable": false,
+      "strictNodeScan": true,
+      "suspend": false,
+      "timeout": "30m"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}
