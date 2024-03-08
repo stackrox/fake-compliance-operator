@@ -1,5 +1,11 @@
 #!/bin/bash
-set -x
+set -x -eo pipefail
+
+kubectl get crd | grep compliance > /dev/null
+if [[ $? != 0 ]]; then
+    echo "Error: Cluster does not have compliance CRDs installed. Exiting."
+    exit 1
+fi
 
 script_dir=$(realpath $(dirname $0))
 
@@ -15,10 +21,9 @@ all_compliance_crds="${script_dir}/all_compliance_crds.yaml"
 
 # Find all CRDs that contain the word "compliance" and export them to a single YAML file
 kubectl get crd -o name | grep "compliance" | while read -r crd_name; do
-    kubectl get "$crd_name" -o yaml >> "$script_dir/$all_compliance_crds"
-    echo "---" >> "$script_dir/$all_compliance_crds" # Separator for YAML documents
+    kubectl get "$crd_name" -o yaml >> "$all_compliance_crds"
+    echo "---" >> "$all_compliance_crds" # Separator for YAML documents
 done
-
 echo "Exported CRD definitions to $all_compliance_crds"
 
 # Export all instances of the CRDs into separate YAML files

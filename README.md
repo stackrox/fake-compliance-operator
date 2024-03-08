@@ -24,5 +24,7 @@ Import compliance operator resource into your local cluster for development purp
    oc create -f config/catalog/operator-group.yaml
    oc create -f config/catalog/subscription.yaml
    ```
- - 
-   
+ - Deploy StackRox
+ - Create a compliance v2 scan schedule
+ - Wait until the compliance results are reported in the StackRox UI
+ - Execute `./export/dump-compliance-operator.sh`

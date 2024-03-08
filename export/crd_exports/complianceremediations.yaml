@@ -8,12 +8,16 @@
         "annotations": {
           "compliance.openshift.io/xccdf-value-used": "var-apiserver-encryption-type"
         },
+        "creationTimestamp": "2024-03-05T15:10:49Z",
+        "generation": 1,
         "labels": {
           "compliance.openshift.io/scan-name": "ocp4-cis",
           "compliance.openshift.io/suite": "compliance-scan-schedule"
         },
         "name": "ocp4-cis-api-server-encryption-provider-cipher",
         "namespace": "openshift-compliance",
+        "resourceVersion": "811747",
+        "uid": "0b1ad1d0-4c2c-4b2d-8393-838f490e62e7"
       },
       "spec": {
         "apply": false,
@@ -45,12 +49,16 @@
         "annotations": {
           "compliance.openshift.io/xccdf-value-used": "var-openshift-audit-profile"
         },
+        "creationTimestamp": "2024-03-05T15:10:50Z",
+        "generation": 1,
         "labels": {
           "compliance.openshift.io/scan-name": "ocp4-cis",
           "compliance.openshift.io/suite": "compliance-scan-schedule"
         },
         "name": "ocp4-cis-audit-profile-set",
         "namespace": "openshift-compliance",
+        "resourceVersion": "811800",
+        "uid": "37645f95-ee65-471e-b06b-e0998868c045"
       },
       "spec": {
         "apply": false,
@@ -78,5 +86,6 @@
   ],
   "kind": "List",
   "metadata": {
+    "resourceVersion": ""
   }
 }
