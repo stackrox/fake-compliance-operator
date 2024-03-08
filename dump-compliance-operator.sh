@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x -eo pipefail
+set -eo pipefail
 
 kubectl get crd | grep compliance > /dev/null
 if [[ $? != 0 ]]; then
