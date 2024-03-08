@@ -5,6 +5,9 @@ script_dir=$(realpath $(dirname $0))
 
 kubectl create ns openshift-compliance || true
 
+# Create a fake compliance-operator deployment to report a healthy state in StackRox
+kubectl create deployment compliance-operator --image=ubuntu:latest || true
+
 # The following resources are created by Sensor
 # kubectl apply -f $script_dir/crd_exports/scansettingbindings.yaml
 # kubectl apply -f $script_dir/crd_exports/scansettings.yaml.yaml
