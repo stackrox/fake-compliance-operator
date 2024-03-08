@@ -6,8 +6,9 @@ Import compliance operator resource into your local cluster for development purp
 
 1. Create a local cluster via colima, kind or similar.
 2. Install StackRox
-3. Apply compliance-operator resources `./export/apply.sh`
-4. Restart Sensor `kubectl delete -n stackrox pod -l app=sensor`
+3. Create a compliance scan schedule in Central with the name `compliance-scan-schedule`
+4. Apply compliance-operator resources `./export/apply.sh`
+5. Restart Sensor `kubectl delete -n stackrox pod -l app=sensor`
 
 ## Export
 
