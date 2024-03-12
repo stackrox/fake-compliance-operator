@@ -11,7 +11,7 @@ Import compliance operator resource into your local cluster for development purp
 6. Execute `./apply.sh scan` imports scan results
 7. View results in the UI
 
-## Export
+## Export & Run original operator on an infra cluster
 
  - Create an Openshift 4.x cluster from https://infra.rox.systems/
  - Once that is started download the artifacts `infractl artifacts <cluster-name> --download-dir <path>`.
